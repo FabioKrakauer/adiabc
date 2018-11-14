@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <?php header("Content-Type: text/html; charset=ISO-8859-1",true);?>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Criar usuario</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +14,9 @@
 <body>
 <?php 
 set_include_path("../control/");
+include("navbar.php");
 require("database.php");?>
-    <form action="/adiabc/control/new-user.php" method="POST">
+    <form action="/adiabc/control/new-user.php" method="POST" class="mt-10">
         Nome: <input type="text" name="name" placeholder="Digite o nome" required><br>
         E-mail: <input type="email" name="email" placeholder="Digite o email"><br>
         Endereço: <input type="text" name="adress" placeholder="Digite o endereco" required><br>
@@ -31,7 +33,6 @@ require("database.php");?>
             <?php }
         ?>
         </select><br>
-        <?php header("Content-Type: text/html; charset=ISO-8859-1",true);?>
         Data de nascimento: <input type="text" name="born" placeholder="Digite a data de nascimento" required><br>
         Celular: <input type="text" name="cellphone" placeholder="Digite o Celular"><br>
         Telefone Residencial: <input type="text" name="home-cell" placeholder="Digite o telefone residencial"><br>
