@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,28 @@
     <script src="main.js"></script> -->
 </head>
 <body>
-    <form action="/control/new-user.php" method="POST">
+<?php 
+set_include_path("../control/");
+require("database.php");?>
+    <form action="/adiabc/control/new-user.php" method="POST">
         Nome: <input type="text" name="name" placeholder="Digite o nome" required><br>
         E-mail: <input type="email" name="email" placeholder="Digite o email"><br>
         Endereço: <input type="text" name="adress" placeholder="Digite o endereco" required><br>
         CEP: <input type="text" name="postal" placeholder="Digite o CEP" required><br>
-        Cidade: <input type="text" name="city" placeholder="Digite o cidade" required><br>
-        Data de nascimento: <input type="born" name="endereco" placeholder="Digite a data de nascimento" required><br>
+        Cidade: <select name="city">
+        <?php 
+            $getCitys = $db->query("SELECT `name` FROM `city`");
+            $qnt = 0;
+            while($row = $getCitys->fetch()){
+                $qnt++;
+                $cityname = $row["name"];
+               ?>
+               <option value="<?php echo $cityname;?>"><?php echo $cityname;?></option>
+            <?php }
+        ?>
+        </select><br>
+        <?php header("Content-Type: text/html; charset=ISO-8859-1",true);?>
+        Data de nascimento: <input type="text" name="born" placeholder="Digite a data de nascimento" required><br>
         Celular: <input type="text" name="cellphone" placeholder="Digite o Celular"><br>
         Telefone Residencial: <input type="text" name="home-cell" placeholder="Digite o telefone residencial"><br>
         Nome da mãe: <input type="text" name="mother" placeholder="Digite o nome da mãe"><br>
@@ -30,8 +46,8 @@
             <option value="Medicamento">Medicamento</option>
         </select><br>
         Twitter: <input type="text" name="twitter" placeholder="Digite o twitter"><br>
-        Instagram: <input type="text" name="twitter" placeholder="Digite o instagram"><br>
-        Facebook: <input type="text" name="twitter" placeholder="Digite o facebook"><br><br>
+        Instagram: <input type="text" name="instagram" placeholder="Digite o instagram"><br>
+        Facebook: <input type="text" name="facebook" placeholder="Digite o facebook"><br><br>
         <textarea name="obs" cols="30" rows="10" placeholder="Digite as observações!"></textarea><br>
         <input type="submit" value="Cadastrar">
 
