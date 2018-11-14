@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
 <?php 
@@ -34,7 +35,7 @@ require("database.php");?>
         Data de nascimento: <input type="text" name="born" placeholder="Digite a data de nascimento" required><br>
         Celular: <input type="text" name="cellphone" placeholder="Digite o Celular"><br>
         Telefone Residencial: <input type="text" name="home-cell" placeholder="Digite o telefone residencial"><br>
-        Nome da mãe: <input type="text" name="mother" placeholder="Digite o nome da mãe"><br>
+        Nome da mãe: <input type="text" name="mother" placeholder="Digite o nome da mae"><br>
         Nome da pai: <input type="text" name="dad" placeholder="Digite o nome do pai"><br>
         Tipo de diabetes: <select name="type">
             <option value="type-1">Tipo 1</option>]
@@ -48,7 +49,7 @@ require("database.php");?>
         Twitter: <input type="text" name="twitter" placeholder="Digite o twitter"><br>
         Instagram: <input type="text" name="instagram" placeholder="Digite o instagram"><br>
         Facebook: <input type="text" name="facebook" placeholder="Digite o facebook"><br><br>
-        <textarea name="obs" cols="30" rows="10" placeholder="Digite as observações!"></textarea><br>
+        <textarea name="obs" cols="30" rows="10" placeholder="Digite as observacoes!"></textarea><br>
         <input type="submit" value="Cadastrar">
 
     </form>
