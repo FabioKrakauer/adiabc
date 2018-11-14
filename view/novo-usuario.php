@@ -17,12 +17,13 @@ set_include_path("../control/");
 include("navbar.php");
 require("database.php");?>
     <form action="/adiabc/control/new-user.php" method="POST" class="mt-10">
-        Nome: <input type="text" name="name" placeholder="Digite o nome" required><br>
+        Nome: <input type="text" name="name" placeholder="Digite o nome" ><br>
         E-mail: <input type="email" name="email" placeholder="Digite o email"><br>
-        Endereço: <input type="text" name="adress" placeholder="Digite o endereco" required><br>
-        CEP: <input type="text" name="postal" placeholder="Digite o CEP" required><br>
+        Endereço: <input type="text" name="adress" placeholder="Digite o endereco" ><br>
+        CEP: <input type="text" name="postal" placeholder="Digite o CEP" ><br>
         Cidade: <select name="city">
-        <?php 
+        <?php
+        header('Content-Type: text/html; charset=utf-8');
             $getCitys = $db->query("SELECT `name` FROM `city`");
             $qnt = 0;
             while($row = $getCitys->fetch()){
@@ -33,7 +34,12 @@ require("database.php");?>
             <?php }
         ?>
         </select><br>
-        Data de nascimento: <input type="text" name="born" placeholder="Digite a data de nascimento" required><br>
+        Data de nascimento: <input type="date" name="born" placeholder="Digite a data de nascimento" ><br>
+        Sexo: <select name="sexo">
+                <option value="masc">Masculino</option>
+                <option value="fem">Feminino</option>
+                <option value="outro">Outro</option>
+        </select><br>
         Celular: <input type="text" name="cellphone" placeholder="Digite o Celular"><br>
         Telefone Residencial: <input type="text" name="home-cell" placeholder="Digite o telefone residencial"><br>
         Nome da mãe: <input type="text" name="mother" placeholder="Digite o nome da mae"><br>

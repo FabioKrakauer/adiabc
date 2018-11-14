@@ -22,6 +22,7 @@ $redes = [
     "instagram" => $_POST["instagram"] ? $_POST["instagram"] : "NULO",
     "facebook" => $_POST["facebook"] ? $_POST["facebook"] : "NULO",
 ];
+$sexo = $_POST["sexo"] ? $_POST["sexo"] : "NULO";
 $obs = $_POST["obs"];
 
 $tipo = 0;
@@ -36,7 +37,7 @@ if($row = $searchCity->fetch()){
     $cityID = $row["id"];
 }
 
-$insert = "INSERT INTO `user` (`id`, `nome`, `email`, `endereco`, `cep`, `cidade`, `born`, `celular`, `residencial`, `pai`, `mae`, `tipo_diabetes`, `tratamento`, `twitter`, `facebook`, `instagram`, `obs`) VALUES (NULL, '$name', '$email', '$adress', '$postal', '$cityID', '$born', '$cellphone', '$homecell', '$dad', '$mother', '$tipo', '$treatment', '".$redes["twitter"]."', '".$redes["facebook"]."', '".$redes["instagram"]."', '$obs')";
+$insert = "INSERT INTO `user` (`id`, `nome`, `email`,`sexo`, `endereco`, `cep`, `cidade`, `born`, `celular`, `residencial`, `pai`, `mae`, `tipo_diabetes`, `tratamento`, `twitter`, `facebook`, `instagram`, `obs`) VALUES (NULL, '$name', '$email','$sexo', '$adress', '$postal', '$cityID', '$born', '$cellphone', '$homecell', '$dad', '$mother', '$tipo', '$treatment', '".$redes["twitter"]."', '".$redes["facebook"]."', '".$redes["instagram"]."', '$obs')";
 $insertQuery = $db->prepare($insert);
 $insertQuery->execute();
 echo "Usuario inserido com sucesso!";

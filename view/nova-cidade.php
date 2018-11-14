@@ -10,7 +10,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <?php include("navbar.php"); ?>
+<?php 
+set_include_path("../control/");
+include("navbar.php");
+require("database.php");?>
     <form action="../control/new-city.php" method="POST">
         Nome da Cidade: <input type="text" name="name"><br>
         Estado: <input type="text" name="state"><br>

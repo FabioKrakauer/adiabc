@@ -17,10 +17,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Usuarios</a>
+        <a class="nav-link" href="usuarios.php">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pesquisar</a>
+        <a class="nav-link" href="pesquisar.php">Pesquisar</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="novo-usuario.php">Cadastrar novo usuario</a>
