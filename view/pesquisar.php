@@ -41,7 +41,6 @@ require("database.php");?>
     <select name="city">
         <option value="null">Selecione uma cidade</option>
         <?php
-        header('Content-Type: text/html; charset=utf-8');
             $getCitys = $db->query("SELECT `name` FROM `city`");
             $qnt = 0;
             while($row = $getCitys->fetch()){
@@ -66,6 +65,12 @@ require("database.php");?>
             $city = isset($_POST["city"]) ? $_POST["city"] : "null";
             $filtro = $_POST["filtro"];
 
+            $activeNome = false;
+            $activeEmail = false;
+            $activeDType = false;
+            $activeSexo = false;
+            $activeCity = false;
+
             $cityID = 0;
             $citySearch = $db->query("SELECT `id` FROM `city` WHERE `name`='".$city."'");
             if($row = $citySearch->fetch()){
@@ -73,32 +78,75 @@ require("database.php");?>
             }
             if($filtro == "nome"){
                 $query .= " `nome`='".$nome."'";
+                $activeNome = true;
             }else if($filtro == "email"){
                 $query .= " `email`='".$email."'";
+                $activeEmail = true;
             }else if($filtro == "tipo"){
                 $query .= " `tipo_diabetes`='".$dtype."'";
+                $activeDType = true;
             }else if($filtro == "sexo"){
                 $query .= " `sexo`='".$sexo."'";
+                $activeSexo = true;
             }else if($filtro == "city"){
                 $query .= " `cidade`='".$cityID."'";
+                $activeCity = true;
             }
 
             if($nome != ""){
                 $query .= " AND `nome`='".$nome."'";
+                $activeNome = true;
             }
             if($email != ""){
                 $query .= " AND `email`='".$email."'";
+                $activeEmail = true;
             }
             if($dtype != "null"){
                 $query .= " AND `tipo_diabetes`='".$dtype."'";
+                $activeDType = true;
             }
             if($sexo != "null"){
                 $query .= " AND `sexo`='".$sexo."'";
+                $activeSexo = true;
             }
             if($city != "null"){
                 $query .= " AND `cidade`='".$cityID."'";
+                $activeCity = true;
             }
     ?>
+    <div class="container">
+            <p class="text-center font-weight-bold">Pesquisas por:</p>
+            <?php 
+                if($activeNome){
+                    echo '<p class="text-center font-weight-bold text-success">NOME: VERDADEIRO</p>';
+                }else{
+                    echo '<p class="text-center font-weight-bold text-danger">NOME: FALSO</p>';
+                }
+                if($activeEmail){
+                    echo '<p class="text-center font-weight-bold text-success">EMAIL: VERDADEIRO</p>';
+                }else{
+                    echo '<p class="text-center font-weight-bold text-danger">EMAIL: FALSO</p>';
+                }
+                if($activeDType){
+                    echo '<p class="text-center font-weight-bold text-success">Tipo de diabetes: VERDADEIRO</p>';
+                }else{
+                    echo '<p class="text-center font-weight-bold text-danger">Tipo de diabetes: FALSO</p>';
+                }
+                if($activeSexo){
+                    echo '<p class="text-center font-weight-bold text-success">Sexo: VERDADEIRO</p>';
+                }else{
+                    echo '<p class="text-center font-weight-bold text-danger">Sexo: FALSO</p>';
+                }
+                if($activeCity){
+                    echo '<p class="text-center font-weight-bold text-success">Cidade: VERDADEIRO</p>';
+                }else{
+                    echo '<p class="text-center font-weight-bold text-danger">Cidade: FALSO</p>';
+                }
+                
+            
+            ?>
+            
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -140,6 +188,7 @@ require("database.php");?>
     
     </table>
 </form>
-        <?php } ?>
+        <?php }
+        ?>
 </body>
 </html>

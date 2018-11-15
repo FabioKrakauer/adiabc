@@ -25,10 +25,11 @@ require("database.php");?>
             </tr>
   </thead>
 <?php
-     $selectAll = $db->query("SELECT * FROM `user`");
+     $selectAll = $db->query("SELECT * FROM `user` ORDER BY `nome`");
     while($row = $selectAll->fetch()){
         $nome = $row["nome"];
         $email = $row["email"];
+        $id = $row["id"];
         $adress = $row["endereco"];
         $build = $row["born"];
         $cityID = $row["cidade"];
@@ -45,7 +46,7 @@ require("database.php");?>
             <td><?php echo $adress; ?></td>
             <td><?php echo $born; ?></td>
             <td><?php echo $cityName; ?></td>
-            <td><a href="#ecluir">Excluir</a> | <a href="#modificar">Modificar</a> | <a href="#ver">Ver detalhes</a></td>
+            <td><a href="user-profile.php?action=edit&id=<?php echo $id; ?>" class="btn btn-danger">Excluir</a> <a href="user-profile.php?action=modify&id=<?php echo $id; ?>" class="btn btn-warning">Modificar</a> <a href="user-profile.php?action=details&id=<?php echo $id; ?>" class="btn btn-success">Ver detalhes</a></td>
         </tr>
     <?php }
 ?> 

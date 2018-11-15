@@ -23,7 +23,6 @@ require("database.php");?>
         CEP: <input type="text" name="postal" placeholder="Digite o CEP" ><br>
         Cidade: <select name="city">
         <?php
-        header('Content-Type: text/html; charset=utf-8');
             $getCitys = $db->query("SELECT `name` FROM `city`");
             $qnt = 0;
             while($row = $getCitys->fetch()){
@@ -57,7 +56,7 @@ require("database.php");?>
         Instagram: <input type="text" name="instagram" placeholder="Digite o instagram"><br>
         Facebook: <input type="text" name="facebook" placeholder="Digite o facebook"><br><br>
         <textarea name="obs" cols="30" rows="10" placeholder="Digite as observacoes!"></textarea><br>
-        <input type="submit" value="Cadastrar">
+        <input type="submit" value="Cadastrar" class="btn btn-primary">
 
     </form>
 </body>
