@@ -5,25 +5,25 @@ if($_POST == null){
 }
 require("database.php");
 
-$name = $_POST['name'] ? $_POST["name"] : "NULO";
-$email = $_POST['email'] ? $_POST["email"] : "NULO";
-$adress = $_POST['adress'] ? $_POST["adress"] : "NULO";
-$postal = $_POST['postal'] ? $_POST["postal"] : "NULO";
-$city = $_POST['city'] ? $_POST["city"] : "NULO";
-$born = $_POST['born'] ? $_POST["born"] : "NULO";
-$cellphone = $_POST['cellphone'] ? $_POST["cellphone"] : "NULO";
-$homecell = $_POST['home-cell'] ? $_POST["home-cell"] : "NULO";
-$mother = $_POST['mother'] ? $_POST["mother"] : "NULO";
-$dad = $_POST['dad'] ? $_POST["dad"] : "NULO";
-$type = $_POST['type'] ? $_POST["type"] : "NULO";
-$treatment = $_POST['treatment'] ? $_POST["treatment"] : "NULO";
+$name = isset($_POST['name']) ? $_POST["name"] : "NULO";
+$email = isset($_POST['email']) ? $_POST["email"] : "NULO";
+$adress = isset($_POST['adress']) ? $_POST["adress"] : "NULO";
+$postal = isset($_POST['postal']) ? $_POST["postal"] : "NULO";
+$city = isset($_POST['city']) ? $_POST["city"] : "NULO";
+$born = isset($_POST['born']) ? $_POST["born"] : "NULO";
+$cellphone = isset($_POST['cellphone']) ? $_POST["cellphone"] : "NULO";
+$homecell = isset($_POST['home-cell']) ? $_POST["home-cell"] : "NULO";
+$mother = isset($_POST['mother']) ? $_POST["mother"] : "NULO";
+$dad = isset($_POST['dad']) ? $_POST["dad"] : "NULO";
+$type = isset($_POST['type']) ? $_POST["type"] : "NULO";
+$treatment = isset($_POST['treatment']) ? $_POST["treatment"] : "NULO";
 $redes = [
-    "twitter" => $_POST["twitter"] ? $_POST["twitter"] : "NULO",
-    "instagram" => $_POST["instagram"] ? $_POST["instagram"] : "NULO",
-    "facebook" => $_POST["facebook"] ? $_POST["facebook"] : "NULO",
+    "twitter" => isset($_POST["twitter"]) ? $_POST["twitter"] : "NULO",
+    "instagram" => isset($_POST["instagram"]) ? $_POST["instagram"] : "NULO",
+    "facebook" => isset($_POST["facebook"]) ? $_POST["facebook"] : "NULO",
 ];
-$sexo = $_POST["sexo"] ? $_POST["sexo"] : "NULO";
-$obs = $_POST["obs"];
+$sexo = isset($_POST["sexo"]) ? $_POST["sexo"] : "NULO";
+$obs = isset($_POST["obs"]) ? $_POST["obs"] : "NULO";
 
 $tipo = 0;
 if($type == "type-1"){
