@@ -48,8 +48,6 @@ require("database.php");?>
                 <td><?php echo $born; ?></td>
                 <td><?php echo $cityName; ?></td>
                 <td>
-                    <a href="user-profile.php?action=edit&id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Excluir</a>
-                    <a href="user-profile.php?action=modify&id=<?php echo $id; ?>" class="btn btn-warning btn-sm">Modificar</a>
                     <a href="user-profile.php?action=details&id=<?php echo $id; ?>" class="btn btn-success btn-sm">Ver detalhes</a>
                 </td>
             </tr>

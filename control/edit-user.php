@@ -1,5 +1,5 @@
 <?php 
-
+require("database.php");
 if(!isset($_POST)){
     echo "Não foi possivel receber nenhum dado de usuario!";
     return;
@@ -17,11 +17,9 @@ $mother = isset($_POST['mother']) ? $_POST["mother"] : "NULO";
 $dad = isset($_POST['dad']) ? $_POST["dad"] : "NULO";
 $type = isset($_POST['type']) ? $_POST["type"] : "NULO";
 $treatment = isset($_POST['treatment']) ? $_POST["treatment"] : "NULO";
-$redes = [
-    "twitter" => isset($_POST["twitter"]) ? $_POST["twitter"] : "NULO",
-    "instagram" => isset($_POST["instagram"]) ? $_POST["instagram"] : "NULO",
-    "facebook" => isset($_POST["facebook"]) ? $_POST["facebook"] : "NULO",
-];
+$twitter = isset($_POST["twitter"]) ? $_POST["twitter"] : "NULO";
+$instagram = isset($_POST["instagram"]) ? $_POST["instagram"] : "NULO";
+$facebook = isset($_POST["facebook"]) ? $_POST["facebook"] : "NULO";
 $sexo = isset($_POST["sexo"]) ? $_POST["sexo"] : "NULO";
 $obs = isset($_POST["obs"]) ? $_POST["obs"] : "NULO";
 
@@ -30,15 +28,20 @@ $searchCity = $db->query("SELECT `id` FROM `city` WHERE `name`='$city'");
 if($row = $searchCity->fetch()){
     $cityID = $row["id"];
 }
-
-$updateQuery = "UPDATE `user` SET `nome`='$name', `email`='$email', `sexo`='$sexo',`endereco`='$adress',`cep`='$postal', `cidade`='$cityID', `born`='$born', `celular`='$cellphone', `residencial`='$homecell', `pai`='$dad', `mae`='$mother',`tipo_diabetes`='$type', `tratamento`='$treatment', `twitter`='$redes["twitter"]', `instagram`='$redes["instagram"]', `facebook`='$redes["facebook"]', `obs`='$obs' WHERE `id`='$id'";
+$tipo = 0;
+if($type == "type-1"){
+    $tipo = 1;
+}else{
+    $tipo = 2;
+}
+$updateQuery = "UPDATE `user` SET `nome`='$name', `email`='$email', `sexo`='$sexo',`endereco`='$adress',`cep`='$postal', `cidade`='$cityID', `born`='$born', `celular`='$cellphone', `residencial`='$homecell', `pai`='$dad', `mae`='$mother',`tipo_diabetes`='$tipo', `tratamento`='$treatment', `twitter`='$twitter', `instagram`='$instagram', `facebook`='$facebook', `obs`='$obs' WHERE `id`='$id'";
 $deleteQuery = "DELETE FROM `user` WHERE `id`='$id'";
 
 if($_POST["action"] == "Excluir"){
-    echo $deleteQuery . " ";
+    $delUser = $db->query($deleteQuery);
     echo "Usuario deletado!";
 }else{
-    echo $updateQuery . " ";
-    echo "Informacoes salvas com sucesso!;"
+    $updateUser = $db->query($updateQuery);
+    echo "Informacoes salvas com sucesso!";
 }
 ?>

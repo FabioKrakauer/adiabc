@@ -181,7 +181,7 @@ require("database.php");?>
             <td><?php echo $adress; ?></td>
             <td><?php echo $born; ?></td>
             <td><?php echo $cityName; ?></td>
-            <td><a href="user-profile.php?action=edit&id=<?php echo $id; ?>">Excluir</a> | <a href="user-profile.php?action=modify&id=<?php echo $id; ?>">Modificar</a> | <a href="user-profile.php?action=details&id=<?php echo $id; ?>">Ver detalhes</a></td>
+            <td><a href="user-profile.php?action=details&id=<?php echo $id; ?>" class="btn btn-success btn-sm">Ver detalhes</a></td>
         </tr>
     <?php }
 ?> 
