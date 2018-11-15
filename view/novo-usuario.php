@@ -44,7 +44,7 @@ require("database.php");?>
         Nome da mãe: <input type="text" name="mother" placeholder="Digite o nome da mae"><br>
         Nome da pai: <input type="text" name="dad" placeholder="Digite o nome do pai"><br>
         Tipo de diabetes: <select name="type">
-            <option value="type-1">Tipo 1</option>]
+            <option value="type-1">Tipo 1</option>
             <option value="type-2">Tipo 2</option>
         </select><br>
         Tratamento: <select name="treatment">
