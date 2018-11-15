@@ -14,12 +14,19 @@
 set_include_path("../control/");
 include("navbar.php");
 require("database.php");?>
-    <form action="../control/new-city.php" method="POST">
-        Nome da Cidade: <input type="text" name="name"><br>
-        Estado: <input type="text" name="state"><br>
-        <input type="submit" value="Cadastrar">
-
-    </form>
+    <div class="container mt-3">
+        <form action="../control/new-city.php" method="POST">
+            <div class="form-group">
+                <label for="name">Nome da Cidade:</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="state">Estado:</label>
+                <input type="text" class="form-control" name="state" id="state">
+            </div>
+            <input type="submit" value="Cadastrar" class="btn btn-primary mb-3">
+        </form>
+    </div>
     
 </body>
 </html>
