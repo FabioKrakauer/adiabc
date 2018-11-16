@@ -153,8 +153,8 @@
                             echo '<option value="Medicamento">Medicamento</option>';
                         }else{
                             echo '<option value="insulina">Insulina</option>';
-                            echo '<option value="bomba" selected>Bomba</option>';
-                            echo '<option value="Medicamento">Medicamento</option>';
+                            echo '<option value="bomba">Bomba</option>';
+                            echo '<option value="Medicamento" selected>Medicamento</option>';
                         }
                     ?>
                 </select>

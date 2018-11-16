@@ -19,14 +19,14 @@ require("database.php");?>
         <form class="form-row mt-2" action="pesquisar.php?s=1" method="POST">
 
         <div class="col-12 row mb-2 mx-auto">
-            <label class="col-12 col-md-2 col-form-label" for="filtro">Principal filtro:</label>
+            <!-- <label class="col-12 col-md-2 col-form-label" for="filtro">Principal filtro:</label>
             <select class="form-control col-12 col-md-10" name="filtro" id="filtro">
                 <option value="nome">Nome</option>
                 <option value="email">Email</option>
                 <option value="tipo">Tipo de diabetes</option>
                 <option value="sexo">Sexo</option>
                 <option value="city">Cidade</option>
-            </select>
+            </select> -->
         </div>
         
 
@@ -81,61 +81,70 @@ require("database.php");?>
             if(!isset($_GET["s"])){
 
             }else{
-                $query = "SELECT * FROM `user` WHERE";
+                $query = "SELECT * FROM `user`";
                 $nome = isset($_POST["name"]) ? $_POST["name"] : "null";
                 $email = isset($_POST["email"]) ? $_POST["email"] : "null";
                 $dtype = isset($_POST["d_type"]) ? $_POST["d_type"] : "null";
                 $sexo = isset($_POST["sexo"]) ? $_POST["sexo"] : "null";
                 $city = isset($_POST["city"]) ? $_POST["city"] : "null";
-                $filtro = $_POST["filtro"];
 
                 $activeNome = false;
                 $activeEmail = false;
                 $activeDType = false;
                 $activeSexo = false;
                 $activeCity = false;
+                $whereIsset = false;
 
                 $cityID = 0;
                 $citySearch = $db->query("SELECT `id` FROM `city` WHERE `name`='".$city."'");
                 if($row = $citySearch->fetch()){
                     $cityID = $row["id"];
                 }
-                if($filtro == "nome"){
-                    $query .= " `nome`='".$nome."'";
-                    $activeNome = true;
-                }else if($filtro == "email"){
-                    $query .= " `email`='".$email."'";
-                    $activeEmail = true;
-                }else if($filtro == "tipo"){
-                    $query .= " `tipo_diabetes`='".$dtype."'";
-                    $activeDType = true;
-                }else if($filtro == "sexo"){
-                    $query .= " `sexo`='".$sexo."'";
-                    $activeSexo = true;
-                }else if($filtro == "city"){
-                    $query .= " `cidade`='".$cityID."'";
-                    $activeCity = true;
-                }
 
                 if($nome != ""){
-                    $query .= " AND `nome`='".$nome."'";
                     $activeNome = true;
+                    if($whereIsset){
+                        $query .= " LIKE `nome`='".$nome."'";
+                    }else{
+                        $query .= " WHERE `nome`='".$nome."'";
+                        $whereIsset = true;
+                    }
                 }
                 if($email != ""){
-                    $query .= " AND `email`='".$email."'";
                     $activeEmail = true;
+                    if($whereIsset){
+                        $query .= " LIKE `email`='".$email."'";
+                    }else{
+                        $query .= " WHERE `email`='".$email."'";
+                        $whereIsset = true;
+                    }
                 }
                 if($dtype != "null"){
-                    $query .= " AND `tipo_diabetes`='".$dtype."'";
                     $activeDType = true;
+                    if($whereIsset){
+                        $query .= " AND `tipo_diabetes`='".$dtype."'";
+                    }else{
+                        $query .= " WHERE `tipo_diabetes`='".$dtype."'";
+                        $whereIsset = true;
+                    }
                 }
                 if($sexo != "null"){
-                    $query .= " AND `sexo`='".$sexo."'";
                     $activeSexo = true;
+                    if($whereIsset){
+                        $query .= " AND `sexo`='".$sexo."'";
+                    }else{
+                        $query .= " WHERE `sexo`='".$sexo."'";
+                        $whereIsset = true;
+                    }
                 }
                 if($city != "null"){
-                    $query .= " AND `cidade`='".$cityID."'";
                     $activeCity = true;
+                    if($whereIsset){
+                        $query .= " AND `cidade`='".$cityID."'";
+                    }else{
+                        $query .= " WHERE `cidade`='".$cidade."'";
+                        $whereIsset = true;
+                    }
                 }
         ?>
         <div class="container">
