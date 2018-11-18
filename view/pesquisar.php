@@ -73,6 +73,15 @@ require("database.php");
                 </select>
             </div>
 
+            <div class="col-12 col-md-4 mb-2">
+                <select class="form-control" name="trat">
+                    <option value="null">Selecione um tratamento</option>
+                    <option value="insulina">Insulina</option>
+                    <option value="bomba">Bomba</option>
+                    <option value="Medicamento">Medicamento</option>
+                </select>
+            </div>
+
 
 
         <input class="btn btn-primary ml-1" type="submit" value="Procurar">
@@ -89,12 +98,14 @@ require("database.php");
                 $dtype = isset($_POST["d_type"]) ? $_POST["d_type"] : "null";
                 $sexo = isset($_POST["sexo"]) ? $_POST["sexo"] : "null";
                 $city = isset($_POST["city"]) ? $_POST["city"] : "null";
+                $trat = isset($_POST["trat"]) ? $_POST["trat"] : "null";
 
                 $activeNome = false;
                 $activeEmail = false;
                 $activeDType = false;
                 $activeSexo = false;
                 $activeCity = false;
+                $activeTrat = false;
                 $whereIsset = false;
 
                 $cityID = 0;
@@ -148,34 +159,48 @@ require("database.php");
                         $whereIsset = true;
                     }
                 }
+                if($trat != "null"){
+                    $activeTrat = true;
+                    if($whereIsset){
+                        $query .= " AND `tratamento`='".$trat."'";
+                    }else{
+                        $query .= " WHERE `tratamento`='".$trat."'";
+                        $whereIsset = true;
+                    }
+                }
         ?>
         <div class="container">
                 <p class="text-center font-weight-bold">Pesquisas por:</p>
                 <?php 
                     if($activeNome){
-                        echo '<p class="text-center font-weight-bold text-success">NOME: VERDADEIRO</p>';
+                        echo '<p class="text-center font-weight-bold text-success">NOME: '.$nome.'</p>';
                     }else{
                         echo '<p class="text-center font-weight-bold text-danger">NOME: FALSO</p>';
                     }
                     if($activeEmail){
-                        echo '<p class="text-center font-weight-bold text-success">EMAIL: VERDADEIRO</p>';
+                        echo '<p class="text-center font-weight-bold text-success">EMAIL: '.$email.'</p>';
                     }else{
                         echo '<p class="text-center font-weight-bold text-danger">EMAIL: FALSO</p>';
                     }
                     if($activeDType){
-                        echo '<p class="text-center font-weight-bold text-success">Tipo de diabetes: VERDADEIRO</p>';
+                        echo '<p class="text-center font-weight-bold text-success">Tipo de diabetes: '.$dtype.'</p>';
                     }else{
                         echo '<p class="text-center font-weight-bold text-danger">Tipo de diabetes: FALSO</p>';
                     }
                     if($activeSexo){
-                        echo '<p class="text-center font-weight-bold text-success">Sexo: VERDADEIRO</p>';
+                        echo '<p class="text-center font-weight-bold text-success">Sexo: '.$sexo.'</p>';
                     }else{
                         echo '<p class="text-center font-weight-bold text-danger">Sexo: FALSO</p>';
                     }
                     if($activeCity){
-                        echo '<p class="text-center font-weight-bold text-success">Cidade: VERDADEIRO</p>';
+                        echo '<p class="text-center font-weight-bold text-success">Cidade: '.$city.'</p>';
                     }else{
                         echo '<p class="text-center font-weight-bold text-danger">Cidade: FALSO</p>';
+                    }
+                    if($activeTrat){
+                        echo '<p class="text-center font-weight-bold text-success">Tratamento: '.$trat.'</p>';
+                    }else{
+                        echo '<p class="text-center font-weight-bold text-danger">Tratamento: FALSO</p>';
                     }
                     
                 
