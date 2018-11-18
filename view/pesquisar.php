@@ -12,7 +12,9 @@
 <?php 
 set_include_path("../control/");
 include("navbar.php");
-require("database.php");?>
+require("database.php");
+
+?>
 
     <div class="container my-3">
     
@@ -142,7 +144,7 @@ require("database.php");?>
                     if($whereIsset){
                         $query .= " AND `cidade`='".$cityID."'";
                     }else{
-                        $query .= " WHERE `cidade`='".$cidade."'";
+                        $query .= " WHERE `cidade`='".$cityID."'";
                         $whereIsset = true;
                     }
                 }
