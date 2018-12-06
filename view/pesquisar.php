@@ -117,18 +117,18 @@ require("database.php");
                 if($nome != ""){
                     $activeNome = true;
                     if($whereIsset){
-                        $query .= " LIKE `nome`='".$nome."'";
+                        $query .= " AND `nome` LIKE '%".$nome."%'";
                     }else{
-                        $query .= " WHERE `nome`='".$nome."'";
+                        $query .= " WHERE `nome` LIKE '%".$nome."%'";
                         $whereIsset = true;
                     }
                 }
                 if($email != ""){
                     $activeEmail = true;
                     if($whereIsset){
-                        $query .= " LIKE `email`='".$email."'";
+                        $query .= " AND `email` LIKE '%".$email."%'";
                     }else{
-                        $query .= " WHERE `email`='".$email."'";
+                        $query .= " WHERE `email` LIKE'%".$email."%'";
                         $whereIsset = true;
                     }
                 }
